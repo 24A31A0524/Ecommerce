@@ -1,58 +1,4 @@
-### Step-by-Step Documentation for Add Product Page (`admin/add_product.php`)
 
----
-
-#### Purpose
-The **Add Product Page** allows administrators to create new product entries by filling out a form with the product’s name, price, description, and image.
-
----
-
-#### 1. Session Authentication
-Ensure only logged-in admins can access this page:
-
-```php
-<?php
-session_start();
-if (!isset($_SESSION['admin_id'])) {
-    header("Location: login.php");
-    exit();
-}
-?>
-```
-
----
-
-#### 2. PHP Logic for Adding Products
-The following PHP code handles form submission and saves the new product to the database:
-
-```php
-<?php
-include '../includes/db.php';
-
-if (isset($_POST['add_product'])) {
-    $name = $_POST['name'];
-    $price = $_POST['price'];
-    $description = $_POST['description'];
-    $image = $_FILES['image']['name'];
-
-    // Upload the image to the 'images' folder
-    move_uploaded_file($_FILES['image']['tmp_name'], "../images/$image");
-
-    // Insert product details into the database
-    $stmt = $conn->prepare("INSERT INTO products (name, price, description, image) VALUES (?, ?, ?, ?)");
-    $stmt->execute([$name, $price, $description, $image]);
-
-    echo "Product added successfully!";
-}
-?>
-```
-
----
-
-#### 3. HTML Form for Adding Products
-The form captures all necessary product details:
-
-```html
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -134,35 +80,4 @@ The form captures all necessary product details:
     </div>
 </body>
 </html>
-```
 
----
-
-#### Features
-1. **Form Inputs**:
-   - **Product Name** (`name`)
-   - **Price** (`price`)
-   - **Description** (`description`)
-   - **Image Upload** (`image`)
-
-2. **Image Handling**:
-   - Images are uploaded to the `images/` folder.
-   - The filename is saved in the database.
-
-3. **Database Insertion**:
-   - Product details are stored in the `products` table.
-
-4. **Feedback**:
-   - Displays a success message after the product is added.
-
----
-
-#### 4. Testing the Add Product Page
-1. Log in as an admin.
-2. Navigate to `http://localhost/ecommerce/admin/add_product.php`.
-3. Fill out the form and submit.
-4. Verify:
-   - The product is added to the `products` table.
-   - The image file is uploaded to the `images/` folder.
-
----
