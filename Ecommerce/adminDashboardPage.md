@@ -1,16 +1,4 @@
-### Step-by-Step Documentation for Admin Dashboard (`admin/dashboard.php`)
 
----
-
-#### Purpose
-The **Admin Dashboard** serves as the central control panel for managing the e-commerce site. It provides navigation links to key admin functionalities like adding and managing products.
-
----
-
-#### 1. Session Authentication
-Ensure only authenticated admins can access the dashboard:
-
-```php
 <?php
 session_start();
 if (!isset($_SESSION['admin_id'])) {
@@ -99,25 +87,4 @@ The dashboard includes navigation links for admin operations and a logout button
     </footer>
 </body>
 </html>
-```
 
----
-
-#### 3. Features
-- **Add Product**: Link to `add_product.php` for creating new product entries.
-- **Manage Products**: Link to `manage_products.php` for editing or deleting products.
-- **Logout**: Ends the admin session and redirects to the login page.
-
----
-
-#### 4. Testing the Dashboard
-1. Log in as an admin.
-2. Navigate to `http://localhost/ecommerce/admin/dashboard.php`.
-3. Verify:
-   - The session check prevents unauthorized access.
-   - Links navigate to their respective pages.
-   - The logout button works as expected.
-
----
-
-Next proceed with **Manage Products (`admin/manage_products.php`)**.
