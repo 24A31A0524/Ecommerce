@@ -2,16 +2,11 @@
 
 ```php
 <?php
-session_start(); // Start the session
-
-// Destroy the session
-session_unset(); // Unset all session variables
-session_destroy(); // Destroy the session
-
-// Redirect to the login page
+session_start(); 
+session_unset();
+session_destroy();
 header('Location: login.php');
 exit();
 ?>
-
 ```html
 <li><a href="pages/logout.php">Logout</a></li>
