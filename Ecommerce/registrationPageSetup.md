@@ -1,18 +1,4 @@
-### Step-by-Step Documentation for the Registration Page
 
-Below is the updated and aligned documentation for creating the `register.php` page, incorporating the actual code.
-
----
-
-#### Step 1: Create the `register.php` File
-1. Inside the `pages` folder, create a file named `register.php`.
-
----
-
-#### Step 2: Structure the HTML Form
-Add the following code to create the registration form:
-
-**HTML Form for Registration**
 ```php
 <!DOCTYPE html>
 <html lang="en">
@@ -96,14 +82,6 @@ Add the following code to create the registration form:
     </div>
 </body>
 </html>
-```
-
----
-
-#### Step 3: Add PHP Logic for Registration
-Add this PHP script at the top of the file to handle user registration:
-
-**PHP Script for Handling Registration**
 ```php
 <?php
 include('../includes/db.php');  // Database connection
@@ -133,18 +111,3 @@ if (isset($_POST['register'])) {
     }
 }
 ?>
-```
-
----
-
-#### Step 4: Test the Registration Page
-1. Start your local server.
-2. Navigate to `http://localhost/ecommerce/pages/register.php`.
-3. Register using an email and password.
-4. Check the `users` table in your database to ensure the new user has been added.
-
----
-
-### Next Steps
-1. Build the **Login Page (`login.php`)** for user authentication.
-2. Implement session management to maintain user sessions.
